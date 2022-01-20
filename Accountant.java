@@ -16,10 +16,13 @@ import java.util.Date;
         private Date date;
 
         @Column(name = "starttime")
-        protected int starttime;
+        @Temporal(TemporalType.TIME)
+        protected Date starttime;
 
         @Column(name = "stoptime")
-        protected int stoptime;
+        @Temporal(TemporalType.TIME)
+        private Date stoptime;
+
 
         @Column(name = "done")
         protected String done;
@@ -31,7 +34,7 @@ import java.util.Date;
     public Accountant() {
     }
 
-    public Accountant(int id, Date date, int starttime, int stoptime, String done, User userid) {
+    public Accountant(int id, Date date, Date starttime, Date stoptime, String done, User userid) {
         this.id = id;
         this.date = date;
         this.starttime = starttime;
@@ -56,19 +59,19 @@ import java.util.Date;
         this.date = date;
     }
 
-    public int getStarttime() {
+    public Date getStarttime() {
         return starttime;
     }
 
-    public void setStarttime(int starttime) {
+    public void setStarttime(Date starttime) {
         this.starttime = starttime;
     }
 
-    public int getStoptime() {
+    public Date getStoptime() {
         return stoptime;
     }
 
-    public void setStoptime(int stoptime) {
+    public void setStoptime(Date stoptime) {
         this.stoptime = stoptime;
     }
 
@@ -87,4 +90,17 @@ import java.util.Date;
     public void setUserid(User userid) {
         this.userid = userid;
     }
+
+    @Override
+    public String toString() {
+        return "Accountant{" +
+                "id=" + id +
+                ", date=" + date +
+                ", starttime=" + starttime +
+                ", stoptime=" + stoptime +
+                ", done='" + done + '\'' +
+                ", userid=" + userid +
+                '}';
+    }
 }
+
